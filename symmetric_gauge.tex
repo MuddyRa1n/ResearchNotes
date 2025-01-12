@@ -1,0 +1,422 @@
+\documentclass[%
+%reprint,
+%superscriptaddress,
+%groupedaddress,
+%unsortedaddress,
+%runinaddress,
+%frontmatterverbose, 
+%preprint,
+%preprintnumbers,
+nofootinbib,
+%nobibnotes,
+%bibnotes,
+ amsmath,amssymb,
+ aps,onecolumn,
+%prl
+prb
+%rmp
+%prstab
+%prstper,
+%floatfix,
+]{revtex4-2}
+
+\usepackage{graphicx}% Include figure files
+\usepackage{dcolumn}% Align table columns on decimal point
+\usepackage{bm}% bold math
+\usepackage{xcolor}
+\usepackage{physics}
+\usepackage{hyperref}
+\usepackage{url}
+\usepackage{cleveref}
+
+\newcommand{\titleplaceholder}{Notes on Quantum Hall Effect(Under Construction)}
+%\usepackage{hyperref}% add hypertext capabilities
+%\usepackage[mathlines]{lineno}% Enable numbering of text and display math
+%\linenumbers\relax % Commence numbering lines
+
+\newcommand{\zz}{\bar{z}} 
+\newcommand{\tilsig}{\tilde{\sigma}} 
+\newcommand{\tilstarsig}{\tilde{\sigma}^\ast} 
+\newcommand{\tilzeta}{\tilde{\zeta}} 
+\newcommand{\tilwp}{\tilde{\wp}} 
+\newcommand{\mA}{\mathcal{A}} 
+\newcommand{\mB}{\mathcal{B}} 
+\newcommand{\mT}{\mathcal{T}} 
+\newcommand{\overpartial}{\bar{\partial}} 
+\renewcommand{\thefootnote}{\roman{footnote}}
+%\usepackage[showframe,%Uncomment any one of the following lines to test 
+%%scale=0.7, marginratio={1:1, 2:3}, ignoreall,% default settings
+%%text={7in,10in},centering,
+%%margin=1.5in,
+%%total={6.5in,8.75in}, top=1.2in, left=0.9in, includefoot,
+%%height=10in,a5paper,hmargin={3cm,0.8in},
+%]{geometry}
+
+
+\begin{document}
+
+\preprint{APS/123-QED}
+\title{\titleplaceholder} % MI: how about this?
+% \thanks{A footnote to the article title}
+\author{Hanyun Sun}
+%\email{hnynsn@zju.edu.cn}
+\affiliation{Zhejiang Institute of Modern Physics, Zhejiang University}
+\date{\today}% It is always \today, today, but any date may be explicitly specified
+
+%\begin{abstract}
+%\end{abstract}
+%\keywords{Suggested keywords}%Use showkeys class option if keyword display desired
+\maketitle
+\section{Landau Levels under the symmetric gauge}
+\subsection{Complex coordinates}
+For the symmetric gauge, $\vb*{\mathcal{A}}=\frac{1}{2}By\vu*{x}-\frac{1}{2}Bx\vu*{y}$, it is much more convinient to study the real space wave function on a complex plane $\left(z,\zz\right)=\left(x+iy,x-iy\right)$,
+for which representation we summarize the frequently used operators as follow.\par 
+First, by the chain rule, the diffrential notations under such coordinates are 
+\begin{align}
+    \partial&=\pdv{z}=\frac{1}{2}\left(\partial_x-i\partial_y\right) \nonumber\\ 
+    \overpartial&=-\partial^\dag=\pdv{\zz}=\frac{1}{2}\left(\partial_x+i\partial_y\right),
+\end{align}
+the cyclotronic momenta $\vb*{\pi}=\left(\pi_x,\pi_y\right)$, thus can be written in complex form 
+\begin{align}
+    \pi=\pi_x+i\pi_y&=\frac{\hbar}{i}\left(\partial_x+i\partial_y\right)+\frac{eB}{2}\left(y-ix\right)\nonumber\\ 
+    &=\frac{2\hbar}{i}\left(\overpartial+\frac{z}{4\ell^2}\right)\nonumber\\ 
+    &=\frac{2\hbar}{i}e^{-\frac{z\zz}{4\ell^2}}\overpartial e^{\frac{z\zz}{4\ell^2}},
+\end{align}
+by checking the fact that $[\pi,\pi^\dag]=\frac{2\hbar^2}{\ell^2}$, one can define \textbf{inter Landau Level} creation and annihilation operator that satisfy $[a,a^\dag]=1$ as 
+\begin{align}
+    a&=\frac{i\ell}{\sqrt{2}\hbar}\pi=\frac{\xi}{\sqrt{2}\ell}=\sqrt{2}\ell e^{-\frac{z\zz}{4\ell^2}}\overpartial e^{\frac{z\zz}{4\ell^2}}\nonumber\\ 
+    a^\dag&=\frac{-i\ell}{\sqrt{2}\hbar}\pi^\dag=\frac{\xi^\dag}{\sqrt{2}\ell}=-\sqrt{2}\ell e^{\frac{z\zz}{4\ell^2}}\partial e^{-\frac{z\zz}{4\ell^2}},
+\end{align}
+where $\xi=\frac{i\ell}{\hbar}\pi$ is the cyclotronic coordinate\par 
+Similarly, we can define the guiding centre momenta $\vb*{\kappa}$  as\footnote{$\kappa=\frac{i\hbar}{\ell}R$, where $R=R_x+iR_y$ is the guiding centre operator.}
+\begin{align}
+    \vb*{\kappa}=\left(\kappa_x,\kappa_y\right)=\left(\pi_x-eBy,\pi_y+eBx\right),
+    %=\frac{i\hbar}{\ell^2}\vb*{R}=\frac{i\hbar}{\ell^2}\left(x+\frac{\ell^2}{\hbar}\pi_y,y-\frac{\ell^2}{\hbar}\pi_x\right),
+\end{align} 
+again we can check that the following commutation relations stand 
+\begin{align}
+    &[\pi,\pi^\dag]=\frac{2\hbar^2}{\ell^2},\quad[\kappa,\kappa^\dag]=-\frac{2\hbar^2}{\ell^2},\nonumber\\ 
+    &[\pi,\kappa^\dag]=0,\quad [\pi,\kappa]=0,
+\end{align} 
+which allows us to define the \textbf{intra Landau Level} creation and annihilation operator
+\begin{align}
+    b&=\frac{i\ell}{\sqrt{2}\hbar}\kappa^\dag=\frac{i\ell}{\sqrt{2}\hbar}\left(\kappa_x-i\kappa_y\right)\nonumber\\ 
+    &=\sqrt{2}\ell\left(\partial+\frac{\zz}{4\ell^2}\right)=\sqrt{2}\ell e^{-\frac{z\zz}{4\ell^2}}\partial e^{\frac{z\zz}{4\ell^2}}\nonumber\\ 
+    b^\dag&=\sqrt{2}\ell\left(\overpartial-\frac{z}{4\ell^2}\right)=-\sqrt{2}\ell e^{\frac{z\zz}{4\ell^2}}\overpartial e^{-\frac{z\zz}{4\ell^2}},
+\end{align}
+needless to say we have $[b,b^\dag]=1$. \par 
+For states on the lowest Landau level (LLL), we shall have $a\ket{\Phi}=0$, resulting in the general form of LLL wave functions as 
+\begin{equation}
+    \Phi\left(z\right)=e^{-\frac{z\zz}{4\ell^2}}f\left(z\right),
+\end{equation}
+where $f\left(z\right)$ is a holomorphic function, i.e., $\overpartial f\left(z\right)=0$, nothing but the Cauchy-Riemann condition in undergraduate complex analysis course.\footnote{It is worthwhile to point out that this holomorphic property only stands for $\vb*{B}=-B\vu*{z}$, by orienting $\vb*{B}$ to the opposite direction $f\left(z\right)$ will be holomorphic in $\zz$ rather than $z$.}
+\subsection{Magnetic translation operator}
+The Bloch basis in a translational invariant system is defined by the eigenvalues of the translation operator $T_{\vb*{d}}=e^{i\vb*{d}\cdot \vb*{p}/\hbar}$ (note that $\vb*{p}$ is an operator and $\vb*{d}$ a c-number!). However, in presense of magnetic 
+field, $T_{\vb*{d}}$ and $H$ cannot be simutanuously diagonalised due to their non-zero commutator, one thus need to search for the magnetic translation operator $\mathcal{T}_{\vb*{d}}$ that 
+commutate with $H=\left(\vb*{p}+e\vb*{\mathcal{A}}\right)^2/2m$. \par 
+For a uniform magnetic field, we always have $\vb*{\mathcal{A}}\left(\vb*{r}+\vb*{d}\right)=\vb*{\mA}\left(\vb*{r}\right)+\grad\varphi_{\vb*{d}} \left(\vb*{r}\right)$, one thus can verify
+\begin{equation}
+    \left(\vb*{p}+e\vb*{\mathcal{A}}\left(\vb*{r}\right)+e\grad\varphi_{\vb*{d}}\left(\vb*{r}\right)\right)^2=e^{-\frac{ie}{\hbar}\varphi_{\vb*{d}}\left(\vb*{r}\right)}\left(\vb*{p}+e\vb*{\mathcal{A}}\left(\vb*{r}\right)\right)^2 e^{\frac{ie}{\hbar}\varphi_{\vb*{d}}\left(\vb*{r}\right)},
+\end{equation}
+suggesting that by defining
+\begin{equation}
+    \mathcal{T}_{\vb*{d}}=e^{\frac{ie}{\hbar}\varphi_{\vb*{d}}\left(\vb*{r}\right)}T_{\vb*{d}}
+\end{equation}
+as the magnetic translation operator we recover the "translational symmetry", under symmetric gauge the explicit form of which is given by 
+\begin{align}
+    \mathcal{T}_{\vb*{d}}=e^{\frac{i}{2\ell^2}\left(d_yx-d_xy\right)}e^{\frac{i}{\hbar}d_xp_x}e^{\frac{i}{\hbar}d_yp_y}=e^{\frac{i}{\ell^2}\vb*{d}\times\vb*{R}},
+\end{align}
+a quiker way of writing down $\mathcal{T}_{\vb*{d}}$ comes from the property $[\kappa,H]=[\kappa^\dag,H]=0$, which immediately gives us\footnote{One can check that the two ways give identical results.}
+\begin{align}
+    \mathcal{T}_{\vb*{d}}&=e^{\frac{i}{\hbar}\vb*{\kappa}\cdot\vb*{d}}\nonumber\\ 
+    &=e^{\frac{i}{2\hbar}\left(\kappa \bar{d}+\kappa^\dag d\right)}\nonumber\\ 
+    &=e^{\frac{1}{\sqrt{2}\ell}\left(-\bar{d}b^\dag+db\right)}\nonumber\\ 
+    &=e^{-\frac{d\bar{d}}{4\ell^2}}e^{\frac{z\zz}{4\ell^2}}e^{\bar{d} \bar{\partial}}e^{-\frac{z\zz}{2\ell^2}}e^{d\partial}e^{\frac{z\zz}{4\ell^2}},
+\end{align}
+where we have used $e^{\frac{b}{\sqrt{2}\ell}}=e^{-\frac{z\zz}{4\ell^2}}e^{\partial}e^{\frac{z\zz}{4\ell^2}}$ in the derivation of last line\footnote{Just do a Taylor expansion to see why.}\par
+Suppose we have a torus for which the number of unit cells in $\vb*{a}_1$ and $\vb*{a}_2$ directions is $N_1$ and $N_2$ respectively, such that the real-space periodicity of the system are characterized by $\vb*{L}_i = N_i\vb*{a}_i$,
+the Bloch-like basis in the LLL is then label by the set %$\{\vb*{k}\}=\left\{\left(\frac{2\pi k_1}{|L_1|},\frac{2\pi k_2}{|L_2|}\right)|k_1,k_2\in\mathbb{Z}\right\}$
+$\{\vb*{k}\}$ which satisfy
+\begin{equation}\label{bloch_basis}
+    \mT_{\vb*{a}_1}\ket{\Phi_{\vb*{k}}}=\left(t_1\right)^{N_2}\ket{\Phi_{\vb*{k}}}=e^{i\theta_1/N_1}e^{i\vb*{k}\cdot\vb*{a}_1}\ket{\Phi_{\vb*{k}}},\quad 
+    \mT_{\vb*{a}_2}\ket{\Phi_{\vb*{k}}}=\left(t_2\right)^{N_1}\ket{\Phi_{\vb*{k}}}=e^{i\theta_2/N_2}e^{i\vb*{k}\cdot\vb*{a}_2}\ket{\Phi_{\vb*{k}}},
+\end{equation}
+and boundary conditions are given by\footnote{Here I assume the total flux number $N_\phi$ is even, for odd $N_\phi$ there is an extra phase according to Haldane which I can't figure out why.}
+\begin{equation}\label{pbc}
+    \mT_{\vb*{L}_1}\ket{\Phi_{\vb*{k}}}=e^{i\theta_1}\ket{\Phi_{\vb*{k}}},\quad
+    \mT_{\vb*{L}_2}\ket{\Phi_{\vb*{k}}}=e^{i\theta_2}\ket{\Phi_{\vb*{k}}},
+\end{equation}
+for periodic boundary condition, we take $\theta_1=\theta_2=0$. To satisfy the commutativity $[\mT_{\vb*{a}_1},\mT_{\vb*{a}_2}]=0$, we need to assert $|\vb*{a}_1\times\vb*{a}_2|=2\pi\ell^2$.
+\subsection{Bloch-like wave function in terms of the theta function}
+We now start to derive the representation of the Bloch-like state $\Phi_{\vb*{k}}\left(z\right)=\braket{\vb*{r}}{\Phi_{\vb*{k}}}$ in the complex plane. The fisrt restriction for 
+a general wave function $\Phi\left(z\right)=e^{-\frac{z\zz}{4\ell^2}}f\left(z\right)$ on LLL comes from the boundary condition eq.~(\ref{pbc}), which aquires
+\begin{align}
+    \mT_{\vb*{L}_i}\Phi\left(z\right)&=e^{-\frac{L_i\bar{L}_i}{4\ell^2}}e^{\frac{z\zz}{4\ell^2}}e^{\bar{L}_i \bar{\partial}}e^{-\frac{z\zz}{2\ell^2}}e^{L_i\partial}f\left(z\right)\nonumber\\
+    &=e^{-\frac{L_i\bar{L}_i}{4\ell^2}}e^{-\frac{z\bar{L}_i}{2\ell^2}}e^{-\frac{z\zz}{4\ell^2}}f\left(z+L_i\right)\nonumber\\ 
+    &=\Phi\left(z\right),
+\end{align}
+thus we have 
+\begin{equation}\label{boundaryconditionofF}
+    f\left(z+L_i\right)=e^{\frac{L_i\bar{L}_i}{4\ell^2}}e^{\frac{z\bar{L}_i}{2\ell^2}}f\left(z\right).
+\end{equation}
+
+Weierstrass factorization theorem states that a holomorphic wavefunction is uniquely determined by its zeros\cite{wiki:Weierstrass,JieWangPhdThesis}. To gain some insights on $f\left(z\right)$, we integrate its logarithmic derivative around the boundry of the torus, which yields 
+\begin{align}
+    \int_{\square}\frac{\dd z}{2\pi i}\frac{f^\prime\left(z\right)}{f\left(z\right)}&=\int_{0}^{L_1}\frac{\dd z}{2\pi i}\dd\left(\ln\left(f\left(z\right)\right)\right)
+    +\int_{0}^{L_2}\frac{\dd z}{2\pi i}\dd\left(\ln\left(f\left(z+L_1\right)\right)\right)\nonumber\\ 
+    &\ \ -\int_{0}^{L_1}\frac{\dd z}{2\pi i}\dd\left(\ln\left(f\left(z+L_2\right)\right)\right)-\int_{0}^{L_2}\frac{\dd z}{2\pi i}\dd\left(\ln\left(f\left(z\right)\right)\right)\nonumber\\ 
+    &=\frac{\bar{L}_1L_2-\bar{L}_2L_1}{4\pi i\ell^2}\nonumber\\
+    &=N_1N_2,
+\end{align}
+and tells that $f\left(z\right)$ has exactly $N_\phi=N_1N_2$ zeros on the torus\footnote{Expanding $f\left(z\right)=f\left(z_i\right)+\left(z-z_i\right)f^\prime\left(z_i\right)+\cdots$ near its $i$'th zero, residue theorem then guarantees 
+the number of first-order singular poles of $\frac{f^\prime\left(z\right)}{f\left(z\right)}$ add up to that of the zeros of $f\left(z\right)$.}. This is a topological nature robust against the shifting of boundary condition parametres $\theta_i$
+defined in eq.(\ref{pbc}). \par 
+
+Naturally one would expect the zeros to separate uniformly in the plane, reminding us of the first auxiliary Jacobi theta function\cite{Haldane1985PrbPeriodic},
+\begin{equation}
+    \vartheta_1(z|\tau)=-i\sum_{n=-\infty}^{\infty}(-1)^n e^{i\pi\tau(n+\frac{1}{2})^2}e^{i\pi(2n+1)z},
+\end{equation}
+where $\mathfrak{Im}(\tau)>0$. The theta funtion has several merits that allows us to construct the LLL wave function therewith:
+\begin{itemize}
+    \item All of its zeros are located in a grid in the complex plane $\left\{ m+ n\tau \vert m,n\in\mathbb{Z} \right\}$.
+    \item Quasi-periodicity on real axis: $\vartheta_1(z+1|\tau)=-\vartheta_1(z|\tau)$.
+    \item Quasi-periodicity in the direction of $\tau$: $\vartheta_1(z+\tau|\tau)=-e^{-i\pi(2z+\tau)}\vartheta_1(z|\tau)$.
+\end{itemize}
+
+To make sure that $f(z)$ has $N_1N_2$ zeros in the parallelogram with sides $L_1$ and $L_2$, we just need to rescale the variables of $\vartheta_1$, together with eq.(\ref*{boundaryconditionofF}) we 
+can consider the function to be 
+\begin{equation}
+    f(z)=e^{\frac{\bar{L}_1z^2}{4L_1\ell^2}}e^{\frac{i\lambda z}{L_1}}\vartheta_1\left(\frac{z}{L_1}-\varsigma \ \bigg\vert\frac{L_2}{N_\phi L_1}\right),
+\end{equation}
+with zeros given by $\left\{(m+\zeta)L_1+\frac{n}{N_\phi}L_2\right\}$, and $\lambda,\varsigma $ to be determined by the boundary conditions, adopting $\theta_1=\theta_2=0$, we have 
+\begin{equation}
+    \lambda=-\pi,\ \varsigma=\frac{\tau+1+2k}{2N_\phi},\quad k\in\mathbb{Z},
+\end{equation}
+so our basis wave functions are now 
+\begin{equation}
+    \phi_k(z)\propto e^{\frac{i\pi k}{N_\phi}}e^{\frac{\bar{L}_1z^2}{4L_1\ell^2}}e^{-\frac{i z}{L_1}}\vartheta_1\left(\frac{z}{L_1}-\frac{\tau+1+2k}{2N_\phi} \ \bigg\vert\frac{L_2}{N_\phi L_1}\right),
+\end{equation}
+it will take quite some work to further show that 
+\begin{equation}
+    t_1\phi_k(z)=\phi_{k-1}(z),\ t_2\phi_k(z)=e^{\frac{2\pi ik}{N_\phi}}\phi_k(z),
+\end{equation}
+which resembles the translations of eigenstates under the Landau gauge, however, we have totally restrict ourselves to symmetric gauge! We can now construct "momentum" eigenstates satisfying eq.(\ref{bloch_basis}):
+\begin{equation}
+    \ket{\Phi_{k1,k2}}=\sum_{m=-\infty}^{\infty}e^{i\frac{2\pi mk_1}{N_1}}\ket{\phi_{k_2+mN_2}}.
+\end{equation}  
+\subsection{Alternative way: modified Weierstrass sigma function}
+\subsubsection{Definition and properties}
+It was proposed by Haldane\cite{HaldaneWeierstrass1,HaldaneWeierstrass2} that the Weierstrass sigma function can serve as a buiding block for LL wave function, later it was discovered\cite{2021JieWangPRL} that
+the following function actually act as the eigenstate of the magnetic translation operator\footnote{We have checked for square lattice that $\int_{\blacksquare}\dd z^2 \Phi_{\vb*{k}}(z)\Phi^\ast_{\vb*{k}}(z)$ equals to the same constant independent of $\vb*{k}$.}:
+\begin{equation}\label{BlochWaveFunctionWeier}
+    \Phi_{\vb*{k}}(z)=\braket{\vb*{r}}{\Phi_{\vb*{k}}}=e^{\frac{-z\zz}{4\ell^2}}e^{\frac{-k\bar{k}\ell^2}{4}}e^{\frac{i\bar{k}z}{2}}\tilsig(z+ik\ell^2;\mathbb{L}),
+\end{equation}
+where $\tilsig(z;\mathbb{L})$ is the \textbf{modified Weierstrass sigma function} for lattice structure $\mathbb{L}\equiv\{ma_1+na_2|m,n\in\mathbb{Z},|\vb*{a}_1\times\vb*{a}_2|=2\pi\ell^2\}$, it is related to the standard Weierstrass sigma function $\sigma(z;\mathbb{L})$ through 
+\begin{equation}
+    \tilsig(z;\mathbb{L})=\sigma(z;\mathbb{L})e^{-\frac{1}{4}G(\mathbb{L})z^2},
+\end{equation}
+here $G(\mathbb{L})$ is the quasi-modular form which vanishes for lattice structure $\mathbb{L}$ with high symmetry(e.g., square lattice or triangular lattice)\footnote{$G(\mathbb{L})=\frac{\zeta(a_i)}{a_i}-\frac{\bar{a}_i}{a_i}$ is invariant under the choice of lattice vectors $a_i$, with $\zeta(z)$ the Weierstrass zeta function\cite{HaldaneWeierstrass1}.}, for our case with square lattices, the modified Weierstrass sigma function
+just coincide with its standard version
+\begin{equation}\label{WeierstrassSigma}
+    \sigma(z;\mathbb{L})=\frac{z}{\ell}\prod_{a\in\mathbb{L}/\{0\}}\left(1-\frac{z}{a}\right)e^{\frac{z}{a}+\frac{z^2}{2a^2}},
+\end{equation}
+from now on, we'll omit $\mathbb{L}$ in notations for simplicity.\par 
+Here we presents some important properties of the modified Weierstrass sigma function:
+\begin{itemize}
+    \item Similar to other quantum hall wave functions on the torus, it has $N_\phi$ zeros in the parallelogram region formed by $N_1a_1$ and $N_2a_2$.
+    \item Modular invariance: It is invariant under any $\mathbf{PSL}(2,\mathbb{Z}): \mqty(a_1 \\ a_2) \to \mqty(\alpha&\beta\\ \gamma &\delta)\mqty(a_1 \\ a_2),\alpha,\delta,\beta,\gamma\in\mathbb{Z}, \alpha\delta-\beta\gamma=1$. Physically, it just means that the wave function is invariant under changing shape of the
+            magnetic unit cell while keeping the flux a constant.
+    \item Quasi-periodicity: $\tilsig(z+a_i)=-e^{\frac{\bar{a}_iz}{2\ell^2}+\frac{\bar{a}_i a_i}{4\ell^2}}\tilsig(z)$.
+    \item $\partial\tilsig(z)=\tilde{\zeta}(z)\tilsig(z)$ and $\partial\tilzeta(z)=-\tilwp(z)$, with $\tilzeta(z)$ the modified Weierstrass zeta function and $\tilwp(z)$ the modified Weierstrass $\wp$-function respectively, which are useful for obtaining wave functions for higher LLs.
+\end{itemize}
+We're now ready to show in detail how the magnetic translation operator act on eq.(\ref{BlochWaveFunctionWeier}):
+\begin{align}\label{MTOActOnBasis}
+    \mT_{\vb*{a}_i}\Phi_{\vb*{k}}(z)&=
+    e^{-\frac{a_i\bar{a}_i}{4\ell^2}}e^{\frac{z\zz}{4\ell^2}}e^{\bar{a}_i \bar{\partial}}\left(e^{-\frac{z\zz}{2\ell^2}}e^{a_i\partial}\left(e^{\frac{-k\bar{k}\ell^2}{4}}e^{\frac{i\bar{k}z}{2}}\tilsig(z+ik\ell^2)\right)\right)\nonumber\\ 
+    &=e^{-\frac{a_i\bar{a}_i}{4\ell^2}}e^{-\frac{z\zz}{4\ell^2}}e^{\frac{-k\bar{k}\ell^2}{4}}e^{\frac{i\bar{k}z}{2}}e^{-\frac{z\bar{a}_i}{2\ell^2}}e^{\frac{i\bar{k}a_i}{2}}\tilsig(z+a_i+ik\ell^2)\nonumber\\ 
+    &=-e^{-\frac{a_i\bar{a}_i}{4\ell^2}}e^{-\frac{z\zz}{4\ell^2}}e^{\frac{-k\bar{k}\ell^2}{4}}e^{\frac{i\bar{k}z}{2}}e^{-\frac{z\bar{a}_i}{2\ell^2}}e^{\frac{i\bar{k}a_i}{2}}e^{\frac{ik\bar{a}_i}{2}}e^{\frac{\bar{a}_iz}{2\ell^2}}e^{\frac{\bar{a}_i a_i}{4\ell^2}}\tilsig(z+ik\ell^2)\nonumber\\ 
+    &=-e^{\frac{ik\bar{a}_i+i\bar{k}a_i}{2}}\Phi_{\vb*{k}}(z)\nonumber\\ 
+    &=-e^{i\vb*{k}\cdot\vb*{a}_i}\Phi_{\vb*{k}}(z),
+\end{align}
+this reveals the fact that indeed we can label the eigenstates of the magnetic translation operator with a set of $\vb*{k}$'s by eq.(\ref{bloch_basis}) with $e^{i\theta_1/N_1}=e^{i\theta_2/N_2}=-1$, for a finite square lattice, $\vb*{k}=\frac{2\pi k_1}{N_1a_1}\vu*{x}+\frac{2\pi k_2}{N_2a_2}\vu*{y}$ with $k_1,k_2$ integers.
+Adding a periodic part to the magnetic field will not break the magnetic translational symmetry\cite{dong2022dirac,florek1999magnetic}, and $\{\mT_{\vb*{d}}\}$ can just be chosen to be one of the representations of the translation group of the modulated hamiltonian.
+Moreover, one can prove that the LLL wave function transforms as $\ket{\Phi_{\vb*{k}}}\to\ket{\Phi^\prime_{\vb*{k}}}=\mathcal{B}(\vb*{r})\ket{\Phi_{\vb*{k}}}$
+under a periodic modulation of the magnetic field, with $\mathcal{B}(\vb*{r})=\sum_{\vb*{b}}w_{\vb*{b}}e^{i\vb*{b}\cdot\vb*{r}}$, the new eigenstate $\ket{\Phi^\prime_{\vb*{k}}}$ is also an eigenstate for $\mT_{\vb*{a}_i}$.  \par 
+To close this section, we point out that in principle wave functions of the $n$'th LL can be obtained through $\ket{\Phi_{n,\vb*{k}}}=\frac{(a^\dag)^n}{\sqrt{n!}}\ket{\Phi_{0,\vb*{k}}}$, for the first and second LL they are reachable through Weierstrass zeta and $\wp$-functions. 
+\subsubsection{A numerically implementable siries expansion of Weierstrass sigma function}
+Being explicit in showing the zeroes, eq.(\ref{WeierstrassSigma}) lacks the advantage of a fast-convergent siries representation. Except for what Haldane had taken in ref.\cite{HaldaneWeierstrass1}, we find an even faster-converged
+series expansion, namely\cite{abramowitz1970handbook}
+\begin{equation}\label{FastConvergeSiries}
+    \sigma(z)=\sum_{m,n=0}^{\infty}c_{m,n}(\frac{1}{2}g_2)^m(2g_3)^n\frac{z^{4m+6n+1}}{(4m+6n+1)!},
+\end{equation}
+where $c_{0,0}=1$, $c_{m,n}=0$ for either subscript negative, and other values are given by the recurrence relation $c_{m,n}=3(m+1)c_{m+1,n-1}+\frac{16}{3}(n+1)c_{m-2,n+1}
+-\frac{1}{3}(2m+3n-1)(4m+6n-1)c_{m-1,n}$, and $g_{2,3}$ determined by the lattice structure through
+\begin{equation}
+g_2(a_1,a_2)= 60\sum_{a\in\mathbb{L}/\{0\}}\frac{1}{a^4},\quad g_3(a_1,a_2)= 140\sum_{a\in\mathbb{L}/\{0\}}\frac{1}{a^6}
+\end{equation}
+are the so-called elliptic invariants. Ugly as it may be, eq.(\ref{FastConvergeSiries}) converges rapidly in the fundamental region $[0,a_1]\times[0,a_2]$ and reaches the precision within $10^{-10}$ with $m=5$ and $n=3$\footnote{The author have checked the reliability of this method
+by comparing with both results of a Mathematica program and the original product expansion, these results are fully convincing.}, for $z$ outside of this region, one need to make use of the quasi-periodicity of $\tilsig(z)$ to assure precision. Notice that $g_3=0$ for a square lattice due to the $\mathbb{Z}_2\times\mathbb{Z}_2$ symmetry, and $g_2=0$ for a triangular lattice, respectively,
+because of the $\mathbf{C}_3$ group symmetry, thus in our case the calculation will be easier\footnote{By setting $\ell=1$ so that $|\vb*{a}_1\times\vb*{a}_2|=2\pi$, we have $g_2=4.789267949492609$ for square lattice and $g_3=2.149327362067650$ for triangular lattice.}.
+\subsubsection{Ingredients for density operator}
+We are now interested in the operator $e^{i\vb*{q}\cdot\vb*{r}}$ acting on a generic "momentum" state $\ket{\Phi_{n,\vb*{k}}}$, where $n$ labels the index of LL. Notice that 
+$e^{i\vb*{q}\cdot\vb*{r}}=e^{i\vb*{q}\cdot(\vb*{R}+\vb*{\xi})}$, and $[\xi,R]=0$, one thus can write $e^{i\vb*{q}\cdot\vb*{r}}\ket{\Phi_{n,\vb*{k}}}=e^{i\vb*{q}\cdot\vb*{R}}\ket{\Phi_{\vb*{k}}}\otimes e^{i\vb*{q}\cdot\vb*{\xi}}\ket{n}$,
+the inter-LL part, described by $e^{i\vb*{q}\cdot\vb*{\xi}}$, the effect of which is invariant under 
+diffrente gauge choices has already been evaluated in Liu's note. We here show that $e^{i\vb*{q}\cdot\vb*{R}}\ket{\Phi_{\vb*{k}}}$ has a rather compact and elegant form using Haldane's modified Weierstrass function. First we show that\footnote{$e^{i\vb*{q}\cdot\vb*{R}}=e^{-\frac{q\bar{q}\ell^2}{4}}e^{\frac{i\bar{q}\ell b^\dag}{\sqrt{2}}}e^{\frac{iq\ell b}{\sqrt{2}}}=e^{-\frac{q\bar{q}\ell^2}{4}}e^{\frac{z\zz}{4\ell^2}}e^{-i\bar{q}\ell^2\bar{\partial}}e^{-\frac{z\zz}{2\ell^2}}e^{iq\ell^2\partial}e^{\frac{z\zz}{4\ell^2}}$.}
+\begin{align}\label{GuidingCentreAction}
+    e^{i\vb*{q}\cdot\vb*{R}}\Phi_{\vb*{k}}(z)&=e^{-\frac{q\bar{q}\ell^2}{4}}e^{-\frac{k\bar{k}\ell^2}{4}}e^{\frac{z\bar{z}}{4\ell^2}}e^{-i\bar{q}\ell^2\bar{\partial}}\left(e^{-\frac{z\bar{z}}{2\ell^2}}e^{\frac{i\bar{k}(z+iq\ell^2)}{2}}\tilsig\left(z+i(k+q)\ell^2\right)\right) \nonumber\\ 
+    &=e^{-\frac{q\bar{q}+k\bar{k}+2\bar{k}q}{4}\ell^2}e^{-\frac{z\bar{z}}{4\ell^2}}e^{\frac{i(\bar{k}+\bar{q})z}{2}}\tilsig\left(z+i(k+q)\ell^2\right)\nonumber\\ 
+    &=e^{\frac{k\bar{q}-\bar{k}q}{4}\ell^2}\Phi_{\vb*{k}+\vb*{q}}(z)\nonumber\\ 
+    &=e^{\frac{i(\vb*{q}\times\vb*{k})}{2}\ell^2}\Phi_{\vb*{k}+\vb*{q}}(z),
+\end{align}
+also, for translations across the unit reciprocal lattice vector $\vb*{b}_i$\footnote{From the definition $\vb*{a}_i\cdot\vb*{b}_j=2\pi\delta_{ij}$ we have $\vb*{b}_{ia}=\epsilon_{ij}\epsilon_{ab}\vb*{a}_{bj}/\ell^2$, in complex form $b_i\ell^2=i\epsilon_{ji}a_j$.}, it obeys 
+\begin{align}\label{StateTransRecip}
+    \Phi_{\vb*{k}+\vb*{b}_i}(z)&=e^{-\frac{z\zz}{4\ell^2}}e^{-\frac{(k+b_i)(\bar{k}+\bar{b}_i)\ell^2}{4}}e^{\frac{i(\bar{k}+\bar{b}_i)z}{2}}\tilsig(z+ik\ell^2-\epsilon_{ji}a_j)\nonumber\\ 
+    &=-e^{-\frac{b_i\bar{b}_i+b_i\bar{k}+k\bar{b}_i}{4}\ell^2}e^{\frac{i\bar{b}_i z}{2}}e^{-\frac{\epsilon_{ji}\bar{a}_j(z+ik\ell^2)}{2\ell^2}}e^{\frac{a_j\bar{a}_j}{4\ell^2}}\Phi_{\vb*{k}}(z)\nonumber\\ 
+    &=-e^{\frac{i\vb*{b}_i\times\vb*{k}}{2}}\ell^2\Phi_{\vb*{k}}(z),
+\end{align}
+which can be readily generalized to any $\vb*{b}=m\vb*{b}_1+n\vb*{b}_2$:
+\begin{equation}
+    \ket{\Phi_{\vb*{k}+\vb*{b}}}=\eta_{\vb*{b}}e^{\frac{i\vb*{b}\times\vb*{k}}{2}\ell^2}\ket{\Phi_{\vb*{k}}},\quad \eta_{\vb*{b}}=(-1)^{m+n+mn},
+\end{equation}
+all together we have 
+\begin{equation}
+    \bra{\Phi_{m,\vb*{k}}}e^{i\vb*{q}\cdot\vb*{r}}\ket{\Phi_{n,\vb*{k}^\prime}}=\sum_{\vb*{b}}
+    \eta_{\vb*{b}}e^{\frac{i\ell^2}{2}(\vb*{k}+\vb*{k}^\prime)\times\vb*{b}}e^{\frac{i\ell^2}{2}\vb*{k}\times\vb*{k}^\prime}g^-_{m,n}(\vb*{k}-\vb*{k}^\prime-\vb*{b})
+    \delta_{\vb*{k}-\vb*{k}^\prime-\vb*{b},\vb*{q}}
+\end{equation}
+where we reproduced the results of ref.\cite{2021JieWangPRL,liu2024theory,dong2022dirac}.
+
+\subsection{The case $\vb*{B}=B\vu*{z}$}
+If we switch $\vb*{B}$ to the opposite direction, e.g., $\vb*{\mathcal{A}}=-\frac{1}{2}By\vu*{x}+\frac{1}{2}Bx\vu*{y}$, naturally our commutation relation will gain a extra minus sign, namely
+\begin{equation}
+    [\pi,\pi^\dag]=-\frac{2\hbar^2}{\ell^2},\ [\kappa,\kappa^\dag]=\frac{2\hbar^2}{\ell^2},
+\end{equation}
+resulting in the creation/annihilation operators 
+\begin{align}
+    a=\frac{i\ell}{\sqrt{2}\hbar}\pi^\dag=\sqrt{2}\ell e^{-\frac{z\zz}{4\ell^2}}\partial e^{\frac{z\zz}{4\ell^2}},\ 
+    a^\dag=\frac{-i\ell}{\sqrt{2}\hbar}\pi=-\sqrt{2}\ell e^{\frac{z\zz}{4\ell^2}}\overpartial e^{-\frac{z\zz}{4\ell^2}},\nonumber\\ 
+    b=\frac{i\ell}{\sqrt{2}\hbar}\kappa=\sqrt{2}\ell e^{-\frac{z\zz}{4\ell^2}}\overpartial e^{\frac{z\zz}{4\ell^2}},\
+    b^\dag=\frac{-i\ell}{\sqrt{2}\hbar}\kappa^\dag=-\sqrt{2}\ell e^{\frac{z\zz}{4\ell^2}}\partial e^{-\frac{z\zz}{4\ell^2}},
+\end{align}
+which implies that the LLL wave function takes the anti-holomorphic form 
+\begin{equation}
+    \Phi\left(\zz\right)=e^{-\frac{z\zz}{4\ell^2}}f\left(\zz\right).
+\end{equation}
+
+The magnetic translation operator under this circumstance is given by 
+\begin{equation}
+    \mT_{\vb*{d}}=e^{\frac{1}{\sqrt{2}}\left(-db^\dag+\bar{d}b\right)}
+        =e^{-\frac{d\bar{d}}{4\ell^2}}e^{\frac{z\zz}{4\ell^2}}e^{d\partial}e^{-\frac{z\zz}{2\ell^2}}e^{\bar{d} \bar{\partial}}e^{\frac{z\zz}{4\ell^2}},
+\end{equation}
+and the sets $\mT_{\vb*{a}_i}$ and $H$ now can be simutanuously diagonalised under the Bloch-like basis 
+\begin{equation}
+    \Phi_{\vb*{k}}(\zz)=\braket{\vb*{r}}{\Phi_{\vb*{k}}}=e^{\frac{-z\zz}{4\ell^2}}e^{\frac{-k\bar{k}\ell^2}{4}}e^{\frac{ik\zz}{2}}\tilstarsig(\zz+i\bar{k}\ell^2),
+\end{equation}
+where $\tilstarsig(\zz)=\tilsig(\zz;\mathbb{L}^\ast)$ is the modified Weierstrass sigma function defined on the \textbf{dual lattice}\footnote{Don't mix it up with the reciprocal lattice!}
+$\mathbb{L}^\ast\equiv\{m\bar{a}_1+n\bar{a}_2|m,n\in\mathbb{Z},|\vb*{a}_1\times\vb*{a}_2|=2\pi\ell^2\}$, with quasi-periodicity condition $\tilstarsig(\zz+\bar{a}_i)=-e^{\frac{a_i\zz}{2\ell^2}+\frac{a_i\bar{a}_i}{4\ell^2}}\tilstarsig(\zz)$.
+Notice that our mapping from real space to the complex coordinate is now $\vb*{r}\to \zz=x-iy$ rather than $\vb*{r}\to z=x+iy$ in previous sections. The corresponding boundary condition is still
+\begin{equation}
+    \mT_{\vb*{a}_i}\ket{\Phi_{\vb*{k}}}=-e^{i\vb*{k}\cdot\vb*{a}_i}\ket{\Phi_{\vb*{k}}},
+\end{equation}
+the derivation is straight foward following~eq.(\ref{MTOActOnBasis}). \par 
+We would then like to show the matrix elements of $e^{i\vb*{q}\cdot\vb*{r}}$. Note that with the reversed magnetic field we have $x+iy=-\frac{i\ell^2}{\hbar}(\pi-\kappa)=\sqrt{2}\ell(a^\dag+b)$, thus 
+\begin{equation}
+    \vb*{q}\cdot\vb*{r}=\frac{\ell}{\sqrt{2}}(qa+qb^\dag+\bar{q}a^\dag+\bar{q}b),
+\end{equation}
+so that
+\begin{align}
+    e^{i\vb*{q}\cdot\vb*{r}}&=e^{i\vb*{q}\cdot\vb*{R}}e^{i\vb*{q}\cdot\vb*{\xi}},\nonumber\\ 
+    &=e^{i\vb*{q}\cdot\vb*{R}}e^{-\frac{\bar{q}q\ell^2}{4}}e^{\frac{i\bar{q}\ell a^\dag}{\sqrt{2}}}e^{\frac{iq\ell a}{\sqrt{2}}},
+\end{align}
+the inter-LL part of the matrix element is given by 
+\begin{equation}
+    g^+_{m,n}(\vb*{q})=e^{-\frac{\bar{q}q\ell^2}{4}}\bra{m}e^{\frac{i\bar{q}\ell a^\dag}{\sqrt{2}}}e^{\frac{iq\ell a}{\sqrt{2}}}\ket{n}=
+    \begin{cases}
+    e^{-\frac{\bar{q}q\ell^2}{4}}\sqrt{\frac{n!}{m!}}\left(\frac{i\ell}{\sqrt{2}}\bar{q}\right)^{m-n}L_{n}^{m-n}\left(\frac{q\bar{q}\ell^2}{2}\right),
+    & \text{if } m\ge n;\\
+    e^{-\frac{\bar{q}q\ell^2}{4}}\sqrt{\frac{m!}{n!}}\left(\frac{i\ell}{\sqrt{2}}q\right)^{n-m}L_{m}^{n-m}\left(\frac{q\bar{q}\ell^2}{2}\right),
+    & \text{if } m< n,
+    \end{cases}
+\end{equation}
+with $L_m^n$ the associated Laguerre polynomials. \par
+For the intra-LL part, since $e^{i\vb*{q}\cdot\vb*{R}}=e^{-\frac{q\bar{q}\ell^2}{4}}e^{\frac{iq\ell b^\dag}{\sqrt{2}}}e^{\frac{i\bar{q}\ell b}{\sqrt{2}}}=e^{-\frac{q\bar{q}\ell^2}{4}}e^{\frac{z\zz}{4\ell^2}}e^{-iq\ell^2\partial}e^{-\frac{z\zz}{2\ell^2}}e^{i\bar{q}\ell^2\overpartial}e^{\frac{z\zz}{4\ell^2}}$,
+after some algebra we can obtain 
+\begin{equation}
+    e^{i\vb*{q}\cdot\vb*{R}}\Phi_{\vb*{k}}(\zz)=e^{-\frac{i(\vb*{q}\times\vb*{k})}{2}\ell^2}\Phi_{\vb*{k}+\vb*{q}}(\zz),
+\end{equation}
+and
+\begin{equation}
+    \Phi_{\vb*{k}+\vb*{b}}(\zz)=\eta_{\vb*{b}}e^{-\frac{i(\vb*{b}\times\vb*{k})}{2}\ell^2}\Phi_{\vb*{k}}(\zz),
+\end{equation}
+which deviates from eq.~(\ref{GuidingCentreAction}) and eq.~(\ref{StateTransRecip}) with just a minus sign on the exponent. The full representation of matrix element would then be 
+\begin{equation}\label{MatrixElements}
+    \bra{\Phi_{m,\vb*{k}}}e^{i\vb*{q}\cdot\vb*{r}}\ket{\Phi_{n,\vb*{k}^\prime}}=\sum_{\vb*{b}}
+    \eta_{\vb*{b}}e^{-\frac{i\ell^2}{2}(\vb*{k}+\vb*{k}^\prime)\times\vb*{b}}e^{-\frac{i\ell^2}{2}\vb*{k}\times\vb*{k}^\prime}g^+_{m,n}(\vb*{k}-\vb*{k}^\prime-\vb*{b})
+    \delta_{\vb*{k}-\vb*{k}^\prime-\vb*{b},\vb*{q}}
+\end{equation}
+\section{Pair correlation function}
+The pair correlation function is defined as 
+\begin{equation}
+    g(\vb*{r})=\frac{A^2}{N_e^2}\expval{\rho(\vb*{0})\rho(\vb*{r})}=\frac{A^2}{N_e^2}\expval{\psi^\dag(\vb*{0})\psi^\dag(\vb*{r})\psi(\vb*{r})\psi(\vb*{0})},
+\end{equation}
+where $A$ is the area of the sample, $N_e$ is the electron number, and $\psi^\dag(\psi)$ the creation(annihilation) operator for a electron, to project it to a band labeled by index $n$ whose single-body Bloch-like basis is $\{\ket{\Phi_{n,\vb*{k}}}\}$, one just need to use 
+the relation $\psi^\dag(\vb*{r})=\sum_{m,\vb*{k}}\braket{\Phi_{m,\vb*{k}}}{\vb*{r}}c^\dag_{\vb*{k}}$ and write 
+\begin{equation}
+    g(\vb*{r})=\frac{A^2}{N_e^2}\sum_{\vb*{k}_1,\vb*{k}_2,\vb*{k}_3,\vb*{k}_4\in BZ}
+    \Phi^\ast_{n,\vb*{k}_1}(\vb*{0}) \Phi^\ast_{n,\vb*{k}_2}(\vb*{r}) \Phi_{n,\vb*{k}_3}(\vb*{r})\Phi_{n,\vb*{k}_4}(\vb*{0})\expval{c^\dag_{\vb*{k}_1}c^\dag_{\vb*{k}_2}c_{\vb*{k}_3}c_{\vb*{k}_4}},
+\end{equation}
+where $\Phi_{n,\vb*{k}_i}(\vb*{r})$ is the electron's wave function. For our case on the lowest modulated LL, $\Phi_{0,\vb*{k}_i}(\vb*{r})=\sum_{b}w_{b}e^{\frac{i(\bar{b}z+b\bar{z})}{2}}\Phi^\sigma_{\vb*{k}}(z)$, where 
+$\Phi^\sigma_{\vb*{k}}(z)$ is the Bloch-like state given in terms of the modified Weierstrass sigma function. 
+\section{Potentially feasible spectral function to detect geomrtric excitations in Generalized Landau Levels}
+It was found out by Haldane that the Quantum Hall problem have some geometric degrees of freedom, among which we focused on the Landau orbit degree of freedom, which allows us to relax the isotropic hamiltonian to anisotropic form by 
+introducing an inversed 2$\times$2 mass tensor,
+\begin{equation}
+    H=g^{ab}\pi_a\pi_b,
+\end{equation} 
+this hamiltonian preserves the mathematical structure of LLs by introducing a set of complex structure $a=\omega_a \xi^a$, assert $[a,a^\dag]=1$ and $H\sim a^\dag a+1/2$, the complex structure is fixed by 
+\begin{align}
+    \omega_a^*\omega_b+\omega_a\omega_b^* &=g_{ab} \nonumber\\ 
+    \omega_a\omega_b^*-\omega_a^*\omega_b &=i\epsilon_{ab}.
+\end{align}
+Recall that the LLL is defined by $a\ket{0}=0$, thus the real space representation of a state on the LLL will experience a rescaling $r\mapsto r=\omega_a r^a$ after introducing the anisotropy.\par{}
+From now on, we let the geometric tensor to take diagonal form $g=\text{diag}[\alpha^{-1/2},\alpha^{1/2}]$, and project the electron interaction into the 0'th modified Landau level 
+\begin{equation}
+    \ket{\Phi_{0,\vb*{k}}}=N_{\vb*{k}}\mB(\vb*{r})\ket{\Phi_{0,\vb*{k}}^{LL}},
+\end{equation}  
+where $N_{\vb*{k}}$ is the normalisation factor, $\mB(\vb*{r})=\sum_{\vb*{b}}w_{\vb*{b}}e^{i\vb*{b}\cdot\vb*{r}}$ the periodic modulation we add, and $\ket{\Phi_{0,\vb*{k}}^{LL}}=\ket{0}\otimes\ket{\vb*{k}}$ is the normalised LL momentum state given in previous sections.
+First we show that 
+\begin{align}
+    \bra{\Phi_{0,\vb*{k}_1}}e^{i\vb*{q}\cdot\vb*{r}}\ket{\Phi_{0,\vb*{k}_2}}&=N_{\vb*{k}_1}N_{\vb*{k}_2}\bra{\Phi_{0,\vb*{k}_1}^{LL}}\mB(\vb*{r})^\dag e^{i\vb*{q}\cdot\vb*{r}}\mB(\vb*{r})\ket{\Phi_{0,\vb*{k}_2}^{LL}}\nonumber\\ 
+    &=N_{\vb*{k}_1}N_{\vb*{k}_2}\sum_{\vb*{b}_1,\vb*{b}_2} w_{\vb*{b}_1}w_{\vb*{b}_2}\bra{\Phi_{0,\vb*{k}_1}^{LL}}e^{i(\vb*{q}+\vb*{b}_1-\vb*{b}_2)\cdot\vb*{r}}\ket{\Phi_{0,\vb*{k}_2}^{LL}} \nonumber\\ 
+    &=N_{\vb*{k}_1}N_{\vb*{k}_2}\sum_{\vb*{b}_1,\vb*{b}_2} w_{\vb*{b}_1}w_{\vb*{b}_2}\bra{0}e^{i(\vb*{q}+\vb*{b}_1-\vb*{b}_2)\cdot\vb*{\xi}}\ket{0}\bra{\vb*{k}_1}e^{i(\vb*{q}+\vb*{b}_1-\vb*{b}_2)\cdot\vb*{R}}\ket{\vb*{k}_2}  \nonumber\\ 
+    &=N_{\vb*{k}_1}N_{\vb*{k}_2}\sum_{\vb*{b}_1,\vb*{b}_2} w_{\vb*{b}_1}w_{\vb*{b}_2}e^{-\frac{1}{4}g^{ab}(q_a+b_{1a}-b_{2a})(q_b+b_{1b}-b_{2b})}\bra{\vb*{k}_1}e^{i(\vb*{q}+\vb*{b}_1-\vb*{b}_2)\cdot\vb*{R}}\ket{\vb*{k}_2},
+\end{align}
+the projected interaction is thereby
+\begin{align}
+    V&=:\frac{1}{2A}\iint\dd\vb*{r}\dd\vb*{r}^\prime V(\vb*{r}-\vb*{r}^\prime)c_{\vb*{r}}^\dag c_{\vb*{r}}c_{\vb*{r}^\prime}^\dag c_{\vb*{r}^\prime} \nonumber\\ 
+    &=\frac{1}{2A}\sum_{\vb*{q}}\sum_{\{\vb*{k}_i\}}V(q)\bra{\Phi_{0,\vb*{k}_1}}e^{i\vb*{q}\cdot\vb*{r}}\ket{\Phi_{0,\vb*{k}_4}}\bra{\Phi_{0,\vb*{k}_2}}e^{-i\vb*{q}\cdot\vb*{r}}\ket{\Phi_{0,\vb*{k}_3}}c_{\vb*{k}_1}^\dag c_{\vb*{k}_4}c_{\vb*{k}_2}^\dag c_{\vb*{k}_3}\nonumber\\ 
+    &=\frac{1}{2A}\sum_{\{\vb*{k}_i\}}V_{\{\vb*{k}_i\}}c_{\vb*{k}_1}^\dag c_{\vb*{k}_4}c_{\vb*{k}_2}^\dag c_{\vb*{k}_3},
+\end{align}
+with 
+\begin{align}
+    V_{\{\vb*{k}_i\}}=&\sum_{\vb*{q}}\sum_{\{\vb*{b}_i\}}V(\vb*{q})N_{\{\vb*{k}_i\}}W_{\{\vb*{b}_i\}}\bra{\vb*{k}_1}e^{i(\vb*{q}+\vb*{b}_1-\vb*{b}_4)\cdot\vb*{R}}\ket{\vb*{k}_4} 
+            \bra{\vb*{k}_2}e^{i(-\vb*{q}+\vb*{b}_2-\vb*{b}_3)\cdot\vb*{R}}\ket{\vb*{k}_3}\nonumber\\ 
+        &\times\exp(\frac{1}{4}\left(\alpha(q_x+b_{1x}-b_{4x})^2+\alpha(-q_x+b_{2x}-b_{3x})^2+\alpha^{-1}(q_y+b_{1y}-b_{4y})^2+\alpha^{-1}(-q_y+b_{2y}-b_{3y})^2\right)),
+\end{align}
+where $N_{\{\vb*{k}_i\}}=N_{\vb*{k}_1}N_{\vb*{k}_2}N_{\vb*{k}_3}N_{\vb*{k}_4}$ and $W_{\{\vb*{b}_i\}}=\omega_{\vb*{b}_1}\omega_{\vb*{b}_2}\omega_{\vb*{b}_3}\omega_{\vb*{b}_4}$.
+We further assume $\alpha=1+\delta$ to expand $V$ to the first order in $\delta$, this results in a pertubation in the projected hamiltonian $\Delta V=\frac{\delta}{4}O$, adopting eq.~(\ref{MatrixElements}), after some irratating but straight-forward algebra, we obtain
+\begin{align}
+    O&=\sum_{\{\vb*{k}_i\}}\sum_{\{\vb*{b}_i\}}\sum_{\vb*{q}}\sum_{\vb*{g}_1,\vb*{g}_2} V(\vb*{q})N_{\{\vb*{k}_i\}}W_{\{\vb*{b}_i\}}\delta_{\vb*{k}_1-\vb*{k}_4-\vb*{g}_1,\vb*{q}+\vb*{b}_1-\vb*{b}_4}\delta_{\vb*{k}_2-\vb*{k}_3-\vb*{g}_2,-\vb*{q}+\vb*{b}_2-\vb*{b}_3} 
+            \eta_{{\vb*{g}_1}}\eta_{{\vb*{g}_2}}f_{\vb*{k}_1,\vb*{k}_4}^{\vb*{g}_1}f_{\vb*{k}_2,\vb*{k}_3}^{\vb*{g}_2} c_{\vb*{k}_1}^\dag c_{\vb*{k}_4}c_{\vb*{k}_2}^\dag c_{\vb*{k}_3}\nonumber\\ 
+    &\quad\quad\times \left((q_x+b_{1x}-b_{4x})^2+(-q_x+b_{2x}-b_{3x})^2-(q_y+b_{1y}-b_{4y})^2-(-q_y+b_{2y}-b_{3y})^2\right)\ell^2\nonumber\\ 
+    &\quad\quad\times \exp(\frac{-1}{4}\left((q_x+b_{1x}-b_{4x})^2+(-q_x+b_{2x}-b_{3x})^2+(q_y+b_{1y}-b_{4y})^2+(-q_y+b_{2y}-b_{3y})^2\right)\ell^2)
+\end{align} 
+where $f_{\vb*{k},\vb*{k}^\prime}^{\vb*{g}}=e^{\frac{i\ell^2}{2}(\vb*{k}+\vb*{k}^\prime)\times\vb*{g}}e^{\frac{i\ell^2}{2}\vb*{k}\times\vb*{k}^\prime}$ with $\vb*{g}$ some reciprocal lattice vector. It is worthwhile to point out that our result reduces to 
+$O=\sum_{\vb*{q}}(q_y^2-q_x^2)V(\vb*{q})e^{-q^2 \ell^2/2}\bar{\rho}(\vb*{q})\bar{\rho}(\vb*{-q})$ at limit $\omega_{\vb*{b}}=\delta_{\vb*{b},0}$. For numerical implementation, we will compute the spectral function 
+\begin{equation}
+    I(E)=\sum_{n}\displaystyle\frac{|\bra{\psi_n}O\ket{GS}|^2}{\bra{GS}O^\dag O\ket{GS}}\delta(E-E_n).
+\end{equation}
+where $O$ have been normal ordered.
+\bibliography{tilt}
+\end{document} 
+% ****** End of file apssamp.tex ******
