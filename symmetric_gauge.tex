@@ -39,9 +39,12 @@ prb
 \newcommand{\tilstarsig}{\tilde{\sigma}^\ast} 
 \newcommand{\tilzeta}{\tilde{\zeta}} 
 \newcommand{\tilwp}{\tilde{\wp}} 
+\newcommand{\tila}{\tilde{a}} 
 \newcommand{\mA}{\mathcal{A}} 
 \newcommand{\mB}{\mathcal{B}} 
 \newcommand{\mT}{\mathcal{T}} 
+\newcommand{\mC}{\mathcal{C}} 
+\newcommand{\vsig}{\vb*{\sigma}}
 \newcommand{\overpartial}{\bar{\partial}} 
 \renewcommand{\thefootnote}{\roman{footnote}}
 %\usepackage[showframe,%Uncomment any one of the following lines to test 
@@ -417,6 +420,48 @@ $O=\sum_{\vb*{q}}(q_y^2-q_x^2)V(\vb*{q})e^{-q^2 \ell^2/2}\bar{\rho}(\vb*{q})\bar
     I(E)=\sum_{n}\displaystyle\frac{|\bra{\psi_n}O\ket{GS}|^2}{\bra{GS}O^\dag O\ket{GS}}\delta(E-E_n).
 \end{equation}
 where $O$ have been normal ordered.
+
+\section{Mapping a band with artbitry Chern number to modified LLs}
+In this section, we will show that by introducing an extra colour indice, we can construct a flatband with artbitry Chern number $\mC=\mC_1\mC_2$, whose normalised wave function can be written in general form, 
+\begin{equation} \label{CNumberWaveFunc}
+    \Phi_{\vb*{k}}(\vb*{r})=e^{i{\vb*{k}}\cdot\vb*{r}}u_{\vb*{k}}(\vb*{r})=N_{\vb*{k}}e^{i{\vb*{k}}\cdot\vb*{r}}\sum_{\vb*{\sigma}}\mB_{\vsig}(\vb*{r})v^{\vsig}_{\vb*{k}}(\vb*{r}),
+\end{equation}
+where $\mB_{\vsig}(\vb*{r})$ is the linear superposition coefficient that varies as a function of $\vb*{r}$, and $\vsig=(\sigma_1,\sigma_2)$ is the so-called colour indice. Denoting 
+\begin{equation}
+    \vb*{a}_{\vsig}=\sigma_1\vb*{a}_1+\sigma_2\vb*{a}_2,
+\end{equation}
+where $\vb*{a}_1$ and $\vb*{a}_2$ are the real-space lattice vectors satisfying $|\vb*{a}_1\times\vb*{a}_2|=2\pi\ell^2$, we aquire 
+\begin{equation}
+    v^{\vsig}_{\vb*{k}}(\vb*{r})=v_{\vb*{k}}(\vb*{r}+\vb*{a}_{\vsig}),
+\end{equation}
+and that 
+\begin{equation}
+    e^{i{\vb*{k}}\cdot\vb*{r}}v_{\vb*{k}}(\vb*{r})=\Phi^{\text{LL}}_{0,\vb*{k}}(\vb*{r})\big\vert_{\ell_B^2=\mC\ell^2}=e^{\frac{-z\zz}{4\mC\ell^2}}e^{\frac{-k\bar{k}\mC\ell^2}{4}}e^{\frac{-ik\bar{z}}{2}}\tilsig(z+i\mC k\ell^2;\mathbb{L})
+\end{equation}
+notice that the lattice structure $\mathbb{L}\equiv\{m\tila_1+n\tila_2|m,n\in\mathbb{Z},|\vb*{\tila}_1\times\vb*{\tila}_2|=2\pi\mC\ell^2\}$ deviates from the LLL form with setting $\vb*{\tila}_1=\mC_1\vb*{a}_1, \vb*{\tila}_2=\mC_2\vb*{a}_2$.
+Notice that $v^{\text{holo}}_{\vb*{k}}(\vb*{r})=e^{\frac{k\bar{k}\mC\ell^2}{4}}v_{\vb*{k}}(\vb*{r})$ is holomorphic in $k$ (the position-momentum duality of LLs), and according to ref.\cite{2021JieWangPRL} that Chern number is described by the integral 
+$\mC=\displaystyle\frac{1}{2\pi i}\oint \dd k\ \partial_k u^{\text{holo}}_{\vb*{k}}(\vb*{r})$ defined on the boundary of 1.B.Z., one can check that our general result eq.(\ref{CNumberWaveFunc}) indeed gives Chern number $\mC$. \footnote{Remind the boundary integral we've done in section.I, again we see that Chern number gives the number of zeros in the area surrounded by the boundary.}\par 
+Before we proceed, we would like to present some useful formulas and notations for future calculation, similar to $\mC=1$ case, we want to know how the wave function changes under lattice translations, which reads 
+\begin{align}
+    v_{\vb*{k}}(z+a_{\vsig})&=e^{\frac{-ik\bar{a}_{\vsig}}{2}}e^{\frac{-a_{\vsig}\bar{a}_{\vsig}}{4\mC\ell^2}}e^{\frac{-z\bar{a}_{\vsig}-\zz a_{\vsig}}{4\mC\ell^2}}
+                            e^{\frac{-z\zz}{4\mC\ell^2}}e^{\frac{-k\bar{k}\mC\ell^2}{4}}e^{\frac{-ik\bar{z}}{2}}\tilsig(z+i\mC (k-ia_{\vsig}/\mC)\ell^2) \nonumber\\ 
+                            &=e^{-i\frac{k\zz+\bar{k}z}{2}}e^{\frac{z\bar{a}_{\vsig}-\zz a_{\vsig}}{4\mC\ell^2}}e^{\frac{(q_{\vsig}\bar{k}-k\bar{q}_{\vsig})\mC\ell^2}{4}}\Phi_{\vb*{k}+\vb*{q}_{\vsig}}(z),
+\end{align}
+where in complex form $q_{\vsig}=\displaystyle\frac{-ia_{\vsig}}{\mC\ell^2}$, combining the reciprocal lattice translation relation $a_j=\epsilon_{jk}b_k\ell^2$, one get 
+$q_{\vsig}=\frac{-i\sigma_1a_1-i\sigma_2a_2}{\mC\ell^2}=\frac{-\sigma_1b_2+\sigma_2b_1}{\mC}$, in vector form 
+\begin{equation}
+    (\vb*{q}_{\vsig})_j=\left(-\frac{\sigma_1}{\mC_1}\tilde{\vb*{b}}_2+\frac{\sigma_2}{\mC_2}\tilde{\vb*{b}}_1\right)_j=\displaystyle\frac{1}{\mC}\epsilon_{jk}\left(\vb*{a}_{\vsig}\right)_k,
+\end{equation}
+where $\vb*{\tilde{b}}_1=\vb*{b}_1/\mC_1, \vb*{\tilde{b}}_2=\vb*{b}_2/\mC_2$, and finally we arrive at a rather elegant result 
+\begin{equation}
+    v^{\vsig}_{\vb*{k}}(\vb*{r})=e^{-\frac{\mC\ell^2}{2}\vb*{q}_{\vsig}\times\vb*{k}}e^{-i(\vb*{k}+\vb*{q}_{\vsig}/2)\cdot\vb*{r}}\Phi_{\vb*{k}+\vb*{q}_{\vsig}}(\vb*{r}).
+\end{equation}
+Next we comment on the choice of $\mB_{\vsig}(\vb*{r})$, unlike in ref.(\cite{JieWang2022PRR}), where the authors chose $\mB_{\vsig}(\vb*{r})$ to have colour-entangled structure(or wormhole-like structure in some lectures) to let $u_{\vb*{k}}(\vb*{r})$ mimic the 
+cell periodic part of wavefunctions in Moir\'e materials, we here will prefer it to take a simpler periodic form, 
+\begin{equation}
+    \mB_{\vsig}(\vb*{r})=\mB(\vb*{r}+\vb*{a}_{\vsig})=\sum_{\vb*{\tilde{b}}}w_{\vb*{\tilde{b}}}e^{i\vb*{\tilde{b}}\cdot(\vb*{r}+\vb*{a}_{\vsig})}=\sum_{\vb*{\tilde{b}}}w(\vb*{\tilde{b}},\vsig)e^{i\vb*{\tilde{b}}\cdot\vb*{r}}
+\end{equation}
+The normalisation factor $N_{\vb*{k}}$ can now be fully determined. Restricting $\langle u_{\vb*{k}}|  u_{\vb*{k}}\rangle=1$,
 \bibliography{tilt}
 \end{document} 
 % ****** End of file apssamp.tex ******
